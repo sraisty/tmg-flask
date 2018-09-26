@@ -1,0 +1,5 @@
+env/
+*.pyc
+*secret*
+.DS_Store
+.Trash/
