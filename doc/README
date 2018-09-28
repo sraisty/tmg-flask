@@ -1,0 +1,120 @@
+"""
+
+There are five file types:
+I = Information Record (24 fields separated by semi-colons)
+D = Individual Entry Record (18 fields separated by semi-colons)
+E = Individual Entry Record (14 fields separated by semi-colons)
+Q = Relay Entry Record (15 or more fields separated by semi-colons) R = Relay Entry Record (10 or more fields separated by semi-colons)
+It is preferred that the D file type be used instead of the E file type and that the Q file type be used instead of the R file type. These newer D and Q file types contain more information.
+Rules
+1. If no information for a given field, leave it blank, but include the semi-colon.
+2. Each record must be followed by a carriage return & line feed.
+3. If at any point in a record, all remaining fields in the record are blank, it can be ended with a
+carriage return without all the extra semi-colons.
+4. For each athlete there can be one information record. You create one E record or D record for
+each individual entry. The 2nd thru 10th fields of both the I, D and E record types are identical. One
+relay per relay entry record with up to 8 relay runner names.
+5. The order of each record makes no difference.
+6. For each I, D or E record for the same athlete, fields 2 through 8 must be the same.
+7. The I record is optional and thus not required.
+DataMax
+Notes for the I Record
+   1 I 1
+2 Last Name 20
+3 First Name 20
+4 Initial 1
+5 Gender 1
+6 Birth Date 10
+7 Team Code 4
+8 Team Name 30
+9 Age 3
+10 School Year 2
+11 Address line 1 30
+12 Addr 2 / Province 30
+13 City 30
+14 State 3
+15 Zip 10
+16 Country 3
+17 Citizen Country 3
+18 Home Phone 20
+19 Office Phone 20
+20 Fax # 20
+21 Shirt size 4
+22 Registration # 15
+23 Competitor # 5
+24 E-mail 30
+
+Information Record (Required) (Required)
+Initial: M = Male, F = Female (Required)
+Birth date: MM/DD/YYYY (Optional)
+Team code: 4 character max; use UNA if unknown (Required) Use Unattached if unknown (Required)
+Age: Optional if birth date provided
+(Optional)
+State - state code for USA, Canada, Australia, etc.
+Country - use country code, such as USA, GER, AUS use country code, such as FRA, CAN, BRA
+Shirt Size - S, M, L, XL, etc.
+
+D-RECORD:
+Example: I; Doe; John; P; M; 09/07/1947; USA; United States; ; ;3395 West Street; Suite 101; Sullivan; ME; 04664; USA; USA; 207-422-6243; ; ; XL; 49-345-6789;296;mm@hy-tekltd.com [Carriage Return]
+Data Max
+1 D 1
+2 Last Name 20
+3 First Name 20
+4 Initial 1
+5 Athlete Gender 1
+6 Birth Date 10
+7 Team Code 4
+8 Team Name 30
+9 Age 3
+10 School Year 2
+11 Event Code 10
+12 Entry Mark 11
+13 Event measure 1
+14 Event Division 2
+15 Competitor # 5
+16 Finish Place 2
+17 Declaration Status 1
+18 Entry Note 60
+Notes for the D Record
+Individual Entry Record (Required)
+(Required)
+(Optional)
+M = Male, F = Female (Required)
+MM/DD/YYYY (Optional)
+4 characters max; use UNA if unknown (Required)
+Use Unattached if unknown (Required)
+Age is optional if birth date provided
+(Optional)
+Examples: 100, 5000S, 10000W, SP, HJ, DEC
+Time: hh:mm:ss.tt (1:23.44.55, 1:19.14, 58.83, 13.4h)
+Field Metric: 12.33, 1233;
+English: 12-10.25", 12', 121025
+Combined-event: 3020 (points)
+M for Metric, E for English (Required)
+A Division number; Optional; For JV, Varsity, Bantam, etc.
+Optional
+Place from prior round if an advancer (optional)
+D = Declared, S = Scratched, A = Alive, blank = Undeclared (optional) Optional
+   Example: D;Doe;John;P;M;09/07/1947;HURR;Hurricane High School;;;SP;21.23;M;;304;;D;Qualified 12-05[CRLF]
+
+
+"""
+
+
+def get_meet_entries(filename):
+    """ Opens the designated file in hytek meet manager format 
+    (comma separated) that contains entries for each athlete into the 
+    different meet events
+
+    """
+
+    try:
+        file = open(filename)
+    except IOError:
+        return IOError    # What to do here? Throw an exception?
+
+    for line in file:
+
+
+
+
